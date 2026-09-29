@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Victa Designs | Graphic Design • Websites • Social Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#0A2620">
+  <style>
+    :root {
+      --ink: #0A2620;
+      --ink-2: #0F3A31;
+      --mint: #3DDC97;
+      --brand: #0B7A50;
+      --brand-dark: #086340;
+      --sun: #FFC857;
+      --bg: #F5F7F6;
+      --tint: #E7F0EC;
+      --text: #16231F;
+      --muted: #54655F;
+      --line: #DCE5E1;
+      --radius: 16px;
+      --shadow: 0 1px 2px rgba(10,38,32,.06), 0 16px 32px -16px rgba(10,38,32,.22);
+      --display: 'Bricolage Grotesque', 'Segoe UI', system-ui, sans-serif;
+      --body: 'DM Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body);
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 { font-family: var(--display); letter-spacing: -0.02em; line-height: 1.15; }
+
+    a:focus-visible, button:focus-visible, .faq-question:focus-visible, .portfolio-item:focus-visible {
+      outline: 3px solid var(--sun);
+      outline-offset: 3px;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background: rgba(10,38,32,.88);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      color: #fff;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .logo {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+    }
+
+    .logo::before {
+      content: '';
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 0 4px rgba(61,220,151,.2);
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      color: rgba(255,255,255,.78);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: .97rem;
+      padding: .3rem 0;
+      background: linear-gradient(var(--mint), var(--mint)) no-repeat 0 100% / 0 2px;
+      transition: color .25s, background-size .3s;
+    }
+
+    .nav-links a:hover { color: #fff; background-size: 100% 2px; }
+
+    .nav-links a.nav-cta {
+      background: var(--mint);
+      color: var(--ink);
+      padding: .55rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: background .25s, transform .25s;
+    }
+
+    .nav-links a.nav-cta:hover {
+      background: #6BE8B1;
+      color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      padding: 6px;
+      background: none;
+      border: 0;
+      color: #fff;
+    }
+
+    .hamburger span {
+      width: 24px;
+      height: 2.5px;
+      background: #fff;
+      border-radius: 3px;
+      transition: transform .3s, opacity .2s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    .progress {
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg, var(--mint), var(--sun));
+    }
+
+    /* ========== HERO with animations ========== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      min-height: min(88vh, 780px);
+      padding: 6rem 5%;
+      text-align: left;
+      color: #fff;
+      background:
+        radial-gradient(56rem 36rem at 85% 5%, rgba(61,220,151,.16), transparent 60%),
+        linear-gradient(160deg, var(--ink), #0C302A 60%, var(--ink));
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 56px 56px;
+      -webkit-mask-image: linear-gradient(to bottom, #000 25%, transparent);
+      mask-image: linear-gradient(to bottom, #000 25%, transparent);
+      animation: gridMove 28s linear infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -8rem;
+      top: 50%;
+      width: 30rem;
+      height: 30rem;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background: radial-gradient(circle at 32% 30%, rgba(61,220,151,.55), rgba(61,220,151,.04) 62%);
+      box-shadow: 0 0 0 3.5rem rgba(255,255,255,.03), 0 0 0 7rem rgba(255,255,255,.02);
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-orb.one {
+      width: 320px;
+      height: 320px;
+      background: rgba(61, 220, 151, 0.18);
+      top: 10%;
+      left: -80px;
+      animation: float1 18s ease-in-out infinite;
+    }
+
+    .hero-orb.two {
+      width: 220px;
+      height: 220px;
+      background: rgba(255, 200, 87, 0.12);
+      bottom: 15%;
+      right: 15%;
+      animation: float2 14s ease-in-out infinite;
+    }
+
+    .hero-orb.three {
+      width: 160px;
+      height: 160px;
+      background: rgba(61, 220, 151, 0.15);
+      top: 40%;
+      left: 40%;
+      animation: float3 20s ease-in-out infinite;
+    }
+
+    .hero-particles span {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255,255,255,0.35);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: particle 12s linear infinite;
+    }
+
+    .hero-particles span:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+    .hero-particles span:nth-child(2) { top: 60%; left: 25%; animation-delay: 2s; }
+    .hero-particles span:nth-child(3) { top: 35%; left: 70%; animation-delay: 4s; }
+    .hero-particles span:nth-child(4) { top: 75%; left: 55%; animation-delay: 1s; }
+    .hero-particles span:nth-child(5) { top: 15%; left: 85%; animation-delay: 3s; }
+    .hero-particles span:nth-child(6) { top: 50%; left: 40%; animation-delay: 5s; }
+
+    @keyframes gridMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 56px 56px; }
+    }
+
+    @keyframes floatOrb {
+      0% { transform: translateY(-50%) scale(1); }
+      100% { transform: translateY(-54%) scale(1.06); }
+    }
+
+    @keyframes float1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(40px, 30px); }
+    }
+
+    @keyframes float2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-30px, -40px); }
+    }
+
+    @keyframes float3 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(25px, -25px); }
+    }
+
+    @keyframes particle {
+      0% { transform: translateY(0) scale(1); opacity: 0; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.4; }
+      100% { transform: translateY(-120px) scale(0.6); opacity: 0; }
+    }
+
+    .hero .container { position: relative; z-index: 1; width: 100%; }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6.2vw, 4.75rem);
+      font-weight: 700;
+      line-height: 1.03;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 560px;
+      margin: 0 0 2.2rem;
+      color: rgba(255,255,255,.78);
+    }
+
+    .hero .container > * { animation: rise .8s cubic-bezier(.2,.7,.2,1) both; }
+    .hero .container > p { animation-delay: .15s; }
+    .hero .container > a { animation-delay: .3s; }
+    .hero .container > a + a { animation-delay: .38s; }
+
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+
+    .btn {
+      display: inline-block;
+      background: var(--brand);
+      color: #fff;
+      padding: .95rem 1.9rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: .5rem .6rem .5rem 0;
+      box-shadow: 0 10px 22px -10px rgba(11,122,80,.7);
+      transition: background .25s, transform .25s, box-shadow .25s;
+    }
+
+    .btn:hover { background: var(--brand-dark); transform: translateY(-2px); }
+    .btn:active { transform: scale(.97); }
+
+    .btn-outline { background: transparent; box-shadow: none; border: 1.5px solid rgba(255,255,255,.35); }
+    .btn-outline:hover { background: rgba(255,255,255,.1); }
+
+    .hero .btn { background: var(--mint); color: var(--ink); }
+    .hero .btn:hover { background: #6BE8B1; }
+    .hero .btn-outline { background: transparent; color: #fff; }
+    .hero .btn-outline:hover { background: rgba(255,255,255,.1); }
+
+    /* SECTIONS */
+    section { padding: clamp(4rem, 8vw, 7rem) 5%; scroll-margin-top: 64px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    h2 {
+      font-size: clamp(1.9rem, 4vw, 2.9rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .marquee { background: var(--mint); color: var(--ink); overflow: hidden; padding: 1rem 0; }
+    .marquee-track { display: flex; width: max-content; animation: scroll 34s linear infinite; }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-track span {
+      display: flex; align-items: center; gap: 1.6rem; padding-right: 1.6rem;
+      font-family: var(--display); font-weight: 600; font-size: 1.15rem; white-space: nowrap;
+    }
+    .marquee-track span::after {
+      content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); opacity: .45;
+    }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    .about { background: #fff; }
+    .about h2 { margin-bottom: 2.5rem; }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .about-text p { margin-bottom: 1.1rem; color: #33443F; }
+
+    .about-content > div:last-child {
+      background: var(--tint);
+      padding: 2rem 2.2rem;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+    }
+
+    .about-content li { padding: .35rem 0; font-weight: 500; }
+    .about-content li::marker { color: var(--brand); }
+
+    .services { background: var(--bg); }
+    .services h3 { font-size: 1.4rem; font-weight: 600; }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 3rem;
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+    }
+
+    .pricing-table th {
+      background: var(--ink);
+      color: #fff;
+      padding: 1rem 1.2rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: .9rem;
+      letter-spacing: .02em;
+    }
+
+    .pricing-table td { padding: 1.1rem 1.2rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table tr:hover td { background: #F1F7F4; }
+    .pricing-table td:first-child { color: var(--ink); white-space: nowrap; }
+
+    .price { font-family: var(--display); font-weight: 700; color: var(--brand); white-space: nowrap; }
+
+    .payment-box {
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      margin-top: 1rem;
+    }
+
+    .payment-box h3 { margin-bottom: 1rem; }
+    .payment-box li::marker { color: var(--brand); }
+
+    .portfolio-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .7rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      font-family: var(--body);
+      font-size: .95rem;
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: .55rem 1.3rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all .25s;
+    }
+
+    .filter-btn:hover { border-color: var(--brand); color: var(--brand); }
+    .filter-btn.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .filter-btn:active { transform: scale(.97); }
+
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.5rem; }
+
+    .portfolio-item {
+      position: relative;
+      height: 270px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--line);
+      box-shadow: var(--shadow);
+      animation: rise .45s ease backwards;
+    }
+
+    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .portfolio-item:hover img { transform: scale(1.07); }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,38,32,.92), rgba(10,38,32,.1) 65%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      opacity: 0;
+      transition: opacity .3s;
+      color: #fff;
+      text-align: left;
+      padding: 1.4rem;
+    }
+
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+    .portfolio-overlay h3 { font-size: 1.25rem; margin-bottom: .5rem; transform: translateY(8px); transition: transform .3s; }
+    .portfolio-item:hover .portfolio-overlay h3 { transform: none; }
+
+    .portfolio-overlay span {
+      font-size: .85rem;
+      padding: .2rem .75rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+    }
+
+    .portfolio-item.hide { display: none; }
+
+    @media (hover: none) { .portfolio-overlay { opacity: 1; } }
+
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(6,20,17,.94);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 4.5rem;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox-content { max-width: 900px; width: 100%; text-align: center; color: #fff; }
+    .lightbox-content img { max-width: 100%; max-height: 75vh; border-radius: 14px; box-shadow: 0 20px 60px rgba(0,0,0,.55); }
+    .lightbox-content h3 { margin-top: 1.2rem; font-size: 1.5rem; }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 28px;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      line-height: 1;
+      color: #fff;
+      background: rgba(255,255,255,.1);
+      border-radius: 50%;
+      cursor: pointer;
+      border: 0;
+      transition: background .25s, color .25s;
+    }
+
+    .lightbox-close:hover { background: var(--mint); color: var(--ink); }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      color: #fff;
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background .25s, color .25s;
+    }
+
+    .lightbox-nav:hover { background: var(--mint); color: var(--ink); }
+    .lightbox-nav.prev { left: 20px; }
+    .lightbox-nav.next { right: 20px; }
+
+    #training { background: var(--ink) !important; color: #fff; }
+    #training h2 { color: #fff; }
+    #training .section-subtitle { color: rgba(255,255,255,.75); }
+    #training p:not(.section-subtitle) { line-height: 2; font-weight: 500; color: rgba(255,255,255,.92); }
+    #training .btn { background: var(--mint); color: var(--ink); box-shadow: none; }
+    #training .btn:hover { background: #6BE8B1; }
+
+    #faq .container { max-width: 820px; }
+    #faq h2 { margin-bottom: 2.5rem; }
+
+    .faq-item {
+      background: #fff;
+      margin-bottom: .9rem;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      transition: border-color .25s, box-shadow .25s;
+    }
+
+    .faq-item:hover { border-color: #B9CDC5; }
+    .faq-item.active { border-color: var(--brand); box-shadow: var(--shadow); }
+
+    .faq-question {
+      padding: 1.2rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .faq-question span {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--tint);
+      color: var(--brand);
+      font-size: 1.2rem;
+      line-height: 1;
+      transition: background .25s, color .25s;
+    }
+
+    .faq-item.active .faq-question span { background: var(--brand); color: #fff; }
+
+    .faq-answer { padding: 0 1.5rem 1.3rem; color: var(--muted); display: none; line-height: 1.75; }
+    .faq-item.active .faq-answer { display: block; animation: rise .3s ease both; }
+
+    .container:has(> .testimonial) { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .container:has(> .testimonial) > h2 { grid-column: 1 / -1; margin-bottom: .5rem; }
+    .container:has(> .testimonial) > .review-count { grid-column: 1 / -1; text-align: center; margin-bottom: 2rem; color: var(--muted); font-size: 1.05rem; }
+
+    .testimonial {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .testimonial:hover { transform: translateY(-4px); }
+
+    .testimonial::before {
+      content: '\201C';
+      display: block;
+      font-family: var(--display);
+      font-size: 4.5rem;
+      line-height: .6;
+      height: 2rem;
+      color: var(--brand);
+      opacity: .35;
+    }
+
+    .testimonial p { font-size: 1.1rem; margin-bottom: 1.2rem; color: #26362F; }
+    .testimonial strong { color: var(--muted); font-weight: 600; font-size: .95rem; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 2rem; align-items: start; }
+    .contact-grid .contact-form { max-width: none; margin: 0; }
+    .contact-info { display: grid; gap: .9rem; }
+
+    .info-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem 1.2rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+    }
+
+    a.info-card:hover {
+      border-color: var(--brand);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .info-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: var(--tint);
+      color: var(--brand);
+      flex-shrink: 0;
+    }
+
+    .info-icon .ico { width: 1.4rem; height: 1.4rem; }
+    .info-card small { display: block; color: var(--muted); font-size: .85rem; line-height: 1.3; }
+    .info-card strong { font-weight: 600; line-height: 1.35; }
+
+    .socials p { font-weight: 600; margin-top: .6rem; }
+    .social-row { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: .6rem; }
+
+    .social-row a {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: #fff;
+      transition: background .25s, color .25s, transform .25s;
+    }
+
+    .social-row a:hover {
+      background: var(--mint);
+      color: var(--ink);
+      transform: translateY(-3px);
+    }
+
+    .map {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      height: 220px;
+      box-shadow: var(--shadow);
+      margin-top: .4rem;
+    }
+
+    .map iframe { width: 100%; height: 100%; border: 0; }
+
+    .contact-form {
+      background: #fff;
+      padding: 2.2rem;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      font-family: var(--body);
+      font-size: 1rem;
+      color: var(--text);
+      padding: .95rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      background: #fff;
+      border-color: var(--brand);
+      box-shadow: 0 0 0 4px rgba(11,122,80,.15);
+    }
+
+    .contact-form textarea { height: 150px; resize: vertical; }
+
+    .contact-form button {
+      font-family: var(--body);
+      background: var(--brand);
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .25s, transform .25s;
+    }
+
+    .contact-form button:hover { background: var(--brand-dark); transform: translateY(-2px); }
+    .contact-form button:active { transform: scale(.97); }
+
+    .form-status { display: none; padding: .85rem 1rem; border-radius: 10px; background: var(--tint); color: var(--brand-dark); font-weight: 500; }
+    .form-status.show { display: block; }
+    .form-status a { color: var(--brand-dark); font-weight: 700; }
+
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.72);
+      text-align: left;
+      padding: 4rem 5% 2rem;
+      border-top: 3px solid var(--mint);
+    }
+
+    .footer-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer-grid h4 { color: #fff; font-family: var(--display); margin-bottom: .8rem; }
+    .footer-grid ul { list-style: none; display: grid; gap: .45rem; }
+    .footer-grid a { color: rgba(255,255,255,.75); font-weight: 400; text-decoration: none; }
+    .footer-grid a:hover { color: var(--mint); }
+    .footer-grid .social-row a { color: #fff; background: rgba(255,255,255,.08); }
+    .footer-grid .social-row a:hover { background: var(--mint); color: var(--ink); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 2.5rem auto 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.1);
+      font-size: .9rem;
+      opacity: .7;
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 16px rgba(0,0,0,.25);
+      z-index: 9999;
+      transition: all .3s ease;
+      animation: pulse 2.4s infinite;
+      text-decoration: none;
+    }
+
+    .whatsapp-button .ico { width: 32px; height: 32px; color: #fff; stroke-width: 1.9; }
+
+    .whatsapp-button:hover {
+      background-color: #1ebe57;
+      transform: scale(1.12);
+      box-shadow: 0 10px 24px rgba(37,211,102,.5);
+      animation: none;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,.6); }
+      70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    .ico { width: 1.35rem; height: 1.35rem; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--ink);
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0;
+        gap: 1.2rem;
+        display: none;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+
+      .nav-links.active { display: flex; }
+      .nav-links a.nav-cta { display: inline-block; }
+
+      .hero { padding: 4.5rem 6%; min-height: auto; }
+      .hero::after { width: 18rem; height: 18rem; right: -9rem; top: 22%; opacity: .6; }
+
+      .about-content { grid-template-columns: 1fr; gap: 2rem; }
+      .container:has(> .testimonial) { grid-template-columns: 1fr; }
+      .contact-grid, .footer-grid { grid-template-columns: 1fr; }
+
+      .pricing-table { display: block; overflow-x: auto; font-size: .9rem; }
+      .pricing-table th, .pricing-table td { padding: .8rem; }
+      .pricing-table td:last-child { min-width: 220px; }
+
+      .contact-form { padding: 1.4rem; }
+      .whatsapp-button { width: 55px; height: 55px; bottom: 20px; right: 20px; }
+
+      .lightbox { padding: 1rem; }
+      .lightbox-nav { top: auto; bottom: 1.2rem; transform: none; }
+      .lightbox-nav.prev { left: calc(50% - 62px); }
+      .lightbox-nav.next { right: calc(50% - 62px); }
+      .lightbox-content img { max-height: 65vh; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6L3 21z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8.5c0-.3.2-.5.5-.5z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-tt" viewBox="0 0 24 24"><path d="M16.5 3h-3.3v12.2a2.7 2.7 0 1 1-2.7-2.7c.3 0 .6.1.9.2V9.4A6 6 0 1 0 16.5 15V9.1c1.1.8 2.5 1.3 4 1.3V7.1C18.3 7 16.8 5.4 16.5 3z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-ph" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+  <symbol id="i-ml" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+</svg>
+
+<nav>
+  <div class="logo">Victa Designs</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" onclick="closeMenu()">Home</a></li>
+    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="#services" onclick="closeMenu()">Services</a></li>
+    <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+    <li><a href="#training" onclick="closeMenu()">Training</a></li>
+    <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+    <li><a class="nav-cta" href="#contact" onclick="closeMenu()">Let’s talk</a></li>
+  </ul>
+  <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="progress" id="progress"></div>
+</nav>
+
+<!-- HERO with animations -->
+<section class="hero" id="home">
+  <div class="hero-orb one"></div>
+  <div class="hero-orb two"></div>
+  <div class="hero-orb three"></div>
+
+  <div class="hero-particles">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="container">
+    <h1>Design that builds brands.<br>Websites that work.<br>Social media that grows.</h1>
+    <p>I’m Victa — a graphic designer, website designer, and social media manager. I also teach others how to master these skills.</p>
+    <a href="#services" class="btn">View Packages</a>
+    <a href="#contact" class="btn btn-outline">Start a Project</a>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Logo Design</span><span>Brand Identity</span><span>Website Design</span><span>Social Media</span><span>Business Cards</span><span>Flyers & Posters</span><span>Training & Mentorship</span>
+    <span>Logo Design</span><span>Brand Identity</span><span>Website Design</span><span>Social Media</span><span>Business Cards</span><span>Flyers & Posters</span><span>Training & Mentorship</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="container">
+    <h2>About Victa Designs</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Victa Designs is a creative studio focused on helping businesses and individuals build strong visual identities and online presence.</p>
+        <p>I specialize in graphic design, website design, social media management, and practical training in these skills.</p>
+        <p>My approach is simple: understand your goals, create designs that communicate clearly, and deliver work that helps you grow.</p>
+      </div>
+      <div>
+        <p><strong>What I do:</strong></p>
+        <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+          <li>Logo & Brand Identity</li>
+          <li>Website Design</li>
+          <li>Social Media Management</li>
+          <li>Design Training & Mentorship</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <h2>Services & Pricing</h2>
+    <p class="section-subtitle">Choose a package that fits your needs. Custom packages are also available.</p>
+
+    <h3 style="margin: 2.5rem 0 1rem;">Graphic Design Packages</h3>
+    <table class="pricing-table">
+      <tr><th>Package</th><th>USD</th><th>UGX</th><th>What’s Included</th></tr>
+      <tr><td><strong>Starter</strong></td><td class="price">$50 – $80</td><td>192,500 – 308,000</td><td>Logo (2 concepts) + 2 revisions + files</td></tr>
+      <tr><td><strong>Brand Basic</strong></td><td class="price">$120 – $180</td><td>462,000 – 693,000</td><td>Logo + Business card + Social media profile kit</td></tr>
+      <tr><td><strong>Full Branding</strong></td><td class="price">$250 – $400</td><td>962,500 – 1,540,000</td><td>Logo + Full brand identity + Business card + Letterhead + Social templates</td></tr>
+    </table>
+
+    <h3 style="margin: 2.5rem 0 1rem;">Website Design Packages</h3>
+    <table class="pricing-table">
+      <tr><th>Package</th><th>USD</th><th>UGX</th><th>What’s Included</th></tr>
+      <tr><td><strong>Landing Page</strong></td><td class="price">$150 – $250</td><td>577,500 – 962,500</td><td>1-page website + Mobile friendly</td></tr>
+      <tr><td><strong>Business Website</strong></td><td class="price">$300 – $500</td><td>1,155,000 – 1,925,000</td><td>Up to 5 pages + Contact form</td></tr>
+      <tr><td><strong>Premium Website</strong></td><td class="price">$600 – $900</td><td>2,310,000 – 3,465,000</td><td>Up to 8 pages + Contact form + Basic SEO + How-to-update training</td></tr>
+    </table>
+
+    <h3 style="margin: 2.5rem 0 1rem;">Social Media Management (Monthly)</h3>
+    <table class="pricing-table">
+      <tr><th>Package</th><th>USD</th><th>UGX</th><th>What’s Included</th></tr>
+      <tr><td><strong>Basic</strong></td><td class="price">$80 – $120</td><td>308,000 – 462,000</td><td>8–12 posts + Captions + Hashtags + Scheduling</td></tr>
+      <tr><td><strong>Standard</strong></td><td class="price">$150 – $220</td><td>577,500 – 847,000</td><td>15–20 posts + Stories + Basic engagement + Monthly report</td></tr>
+      <tr><td><strong>Growth</strong></td><td class="price">$250 – $350</td><td>962,500 – 1,347,500</td><td>20–25 posts + Stories + Reels + Strategy + Growth support</td></tr>
+    </table>
+
+    <h3 style="margin: 2.5rem 0 1rem;">Training & Mentorship</h3>
+    <table class="pricing-table">
+      <tr><th>Package</th><th>USD</th><th>UGX</th><th>What’s Included</th></tr>
+      <tr><td><strong>One-on-One Session</strong></td><td class="price">$30 – $50</td><td>115,500 – 192,500</td><td>1-hour practical training</td></tr>
+      <tr><td><strong>Beginner Course</strong></td><td class="price">$120 – $180</td><td>462,000 – 693,000</td><td>4 sessions (choose one skill)</td></tr>
+      <tr><td><strong>Full Skills Package</strong></td><td class="price">$300 – $450</td><td>1,155,000 – 1,732,500</td><td>Complete training in all 3 skills + Support</td></tr>
+    </table>
+
+    <div class="payment-box">
+      <h3>Payment Terms & Methods</h3>
+      <p><strong>Payment Structure:</strong></p>
+      <ul style="margin: 0.5rem 0 1rem 1.2rem;">
+        <li>50% deposit to start the project</li>
+        <li>50% balance on completion (before final files are released)</li>
+        <li>Monthly retainers: Full payment at the beginning of each month</li>
+      </ul>
+      <p><strong>Accepted Payment Methods:</strong></p>
+      <ul style="margin: 0.5rem 0 0 1.2rem;">
+        <li>MTN Mobile Money & Airtel Money</li>
+        <li>Bank Transfer</li>
+        <li>Cash (for local clients)</li>
+        <li>Other options can be discussed</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <h2>Selected Projects</h2>
+    <p class="section-subtitle">Click any project to view it larger. Use the filters to browse by category.</p>
+
+    <div class="portfolio-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="branding">Brand Identity</button>
+      <button class="filter-btn" data-filter="website">Websites</button>
+      <button class="filter-btn" data-filter="social">Social Media</button>
+      <button class="filter-btn" data-filter="other">Other</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+      <div class="portfolio-item" tabindex="0" data-category="branding" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" loading="lazy" decoding="async" width="600" height="400" alt="Brand Identity">
+        <div class="portfolio-overlay"><h3>Modern Logo Suite</h3><span>Brand Identity</span></div>
+      </div>
+      <div class="portfolio-item" tabindex="0" data-category="website" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1467232004584-a241c7c6aa55?w=600&h=400&fit=crop" loading="lazy" decoding="async" width="600" height="400" alt="Website Design">
+        <div class="portfolio-overlay"><h3>Business Website</h3><span>Website Design</span></div>
+      </div>
+      <div class="portfolio-item" tabindex="0" data-category="social" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1611162616475-46b635cb4953?w=600&h=400&fit=crop" loading="lazy" decoding="async" width="600" height="400" alt="Social Media">
+        <div class="portfolio-overlay"><h3>Social Media Kit</h3><span>Social Media</span></div>
+      </div>
+      <div class="portfolio-item" tabindex="0" data-category="branding" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1626785774573-4b7993141ae5?w=600&h=400&fit=crop" loading="lazy" decoding="async" width="600" height="400" alt="Brand Identity">
+        <div class="portfolio-overlay"><h3>Complete Brand Package</h3><span>Brand Identity</span></div>
+      </div>
+      <div class="portfolio-item" tabindex="0" data-category="website" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop" loading="lazy" decoding="async" width="600" height="400" alt="Website">
+        <div class="portfolio-overlay"><h3>Portfolio Website</h3><span>Website Design</span></div>
+      </div>
+      <div class="portfolio-item" tabindex="0" data-category="social" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop" loading="lazy" decoding="async" width="600" height="400" alt="Social Media">
+        <div class="portfolio-overlay"><h3>Instagram Campaign</h3><span>Social Media</span></div>
+      </div>
+      <div class="portfolio-item" tabindex="0" data-category="other" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=400&fit=crop" loading="lazy" decoding="async" width="600" height="400" alt="Flyer Design">
+        <div class="portfolio-overlay"><h3>Event Flyer Design</h3><span>Other</span></div>
+      </div>
+      <div class="portfolio-item" tabindex="0" data-category="branding" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&h=400&fit=crop" loading="lazy" decoding="async" width="600" height="400" alt="Logo Design">
+        <div class="portfolio-overlay"><h3>Minimal Logo Design</h3><span>Brand Identity</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project preview" onclick="closeLightbox()">
+  <button class="lightbox-close" aria-label="Close preview" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav prev" aria-label="Previous project" onclick="event.stopPropagation(); stepLightbox(-1)">&#8249;</button>
+  <div class="lightbox-content" onclick="event.stopPropagation()">
+    <img id="lightboxImg" src="" alt="">
+    <h3 id="lightboxTitle"></h3>
+  </div>
+  <button class="lightbox-nav next" aria-label="Next project" onclick="event.stopPropagation(); stepLightbox(1)">&#8250;</button>
+</div>
+
+<section id="training">
+  <div class="container">
+    <h2>Learn Design Skills With Me</h2>
+    <p class="section-subtitle">I help beginners and intermediate learners master practical skills in graphic design, website design, and social media management.</p>
+    <div style="text-align: center;">
+      <p>✔ Hands-on learning<br>✔ Real project guidance<br>✔ Feedback & mentorship</p>
+      <br>
+      <a href="#contact" class="btn">Book a Training Session</a>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">1. How long does a typical project take? <span>+</span></div>
+      <div class="faq-answer">Logo / Graphic Design: 3–7 days<br>Website Design: 7–14 days<br>Social Media Management: Ongoing (monthly)<br>Training sessions: Flexible based on your schedule</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">2. Do you offer revisions? <span>+</span></div>
+      <div class="faq-answer">Yes. Every package includes a set number of revisions. Extra revisions can be requested at a small additional fee.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">3. What do I need to provide to get started? <span>+</span></div>
+      <div class="faq-answer">Your business name and details, any existing logo or brand materials, examples of styles you like, and a clear description of what you need.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">4. Do you work with clients outside Uganda? <span>+</span></div>
+      <div class="faq-answer">Yes. I work with both local and international clients. Communication is mainly through WhatsApp, email, or Zoom.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">5. How does payment work? <span>+</span></div>
+      <div class="faq-answer">50% deposit to start, 50% on completion. Monthly packages are paid at the beginning of each month.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">6. What payment methods do you accept? <span>+</span></div>
+      <div class="faq-answer">MTN Mobile Money, Airtel Money, Bank Transfer, Cash (local clients), and other methods by arrangement.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">7. Can I get a custom package? <span>+</span></div>
+      <div class="faq-answer">Yes. If the standard packages don’t fully match your needs, I can create a custom package for you.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">8. Do you provide the source files? <span>+</span></div>
+      <div class="faq-answer">Yes. After final payment, you will receive all necessary files (including editable source files where applicable).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">9. Do you offer training online or in person? <span>+</span></div>
+      <div class="faq-answer">Both options are available. Online via Zoom/Google Meet. In-person training can be arranged for local clients.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question" tabindex="0" role="button" onclick="toggleFaq(this)">10. What happens after I make the deposit? <span>+</span></div>
+      <div class="faq-answer">I will confirm receipt of payment, discuss your requirements in detail, and begin working on your project according to the agreed timeline.</div>
+    </div>
+  </div>
+</section>
+
+<section style="background: var(--tint);">
+  <div class="container">
+    <h2>What Clients Say</h2>
+    <p class="review-count">Based on <strong>24+ client reviews</strong></p>
+    <div class="testimonial">
+      <p>“Victa transformed our brand identity and social media presence. Professional, creative, and easy to work with.”</p>
+      <strong>— Client Name</strong>
+    </div>
+    <div class="testimonial">
+      <p>“The website she designed for my business looks modern and works perfectly on mobile. Highly recommended!”</p>
+      <strong>— Client Name</strong>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Let’s Work Together</h2>
+    <p class="section-subtitle">Have a project in mind or want to learn design skills? I’d love to hear from you.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <a class="info-card" href="https://wa.me/256742173435" target="_blank" rel="noopener">
+          <span class="info-icon"><svg class="ico"><use href="#i-wa"/></svg></span>
+          <span><small>WhatsApp (fastest reply)</small><strong>+256 742 173 435</strong></span>
+        </a>
+        <a class="info-card" href="tel:+256742173435">
+          <span class="info-icon"><svg class="ico"><use href="#i-ph"/></svg></span>
+          <span><small>Call me</small><strong>+256 742 173 435</strong></span>
+        </a>
+        <a class="info-card" href="mailto:hello@victadesigns.com">
+          <span class="info-icon"><svg class="ico"><use href="#i-ml"/></svg></span>
+          <span><small>Email</small><strong>hello@victadesigns.com</strong></span>
+        </a>
+        <div class="info-card">
+          <span class="info-icon"><svg class="ico"><use href="#i-pin"/></svg></span>
+          <span><small>Based in</small><strong>Kampala, Uganda · working worldwide</strong></span>
+        </div>
+
+        <div class="socials">
+          <p>Follow my work</p>
+          <div class="social-row">
+            <a href="https://instagram.com/victadesigns" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ico"><use href="#i-ig"/></svg></a>
+            <a href="https://facebook.com/victadesigns" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ico"><use href="#i-fb"/></svg></a>
+            <a href="https://www.tiktok.com/@victadesign?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener" aria-label="TikTok"><svg class="ico"><use href="#i-tt"/></svg></a>
+            <a href="https://wa.me/256742173435" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ico"><use href="#i-wa"/></svg></a>
+          </div>
+        </div>
+
+        <div class="map">
+          <iframe title="Map of Kampala, Uganda" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Kampala,Uganda&output=embed"></iframe>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="return sendForm(event)">
+        <input type="text" name="name" autocomplete="name" aria-label="Your name" placeholder="Your Name" required>
+        <input type="email" name="email" autocomplete="email" aria-label="Your email" placeholder="Your Email" required>
+        <input type="tel" name="phone" autocomplete="tel" aria-label="Phone" placeholder="Phone (optional)">
+        <select name="service" aria-label="Service interested in" required>
+          <option value="">Service interested in</option>
+          <option>Graphic Design</option>
+          <option>Website Design</option>
+          <option>Social Media Management</option>
+          <option>Training / Mentorship</option>
+          <option>Other</option>
+        </select>
+        <textarea name="message" aria-label="Project details" placeholder="Tell me about your project..." required></textarea>
+        <button type="submit">Send via WhatsApp</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <strong>Victa Designs</strong>
+      <p style="margin:.7rem 0 1.1rem;max-width:34ch;">Graphic design, websites, social media and training for brands that want to grow.</p>
+      <div class="social-row">
+        <a href="https://instagram.com/victadesigns" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ico"><use href="#i-ig"/></svg></a>
+        <a href="https://facebook.com/victadesigns" target="_blank" rel="noopener" aria-label="Facebook"><svg class="ico"><use href="#i-fb"/></svg></a>
+        <a href="https://www.tiktok.com/@victadesign?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener" aria-label="TikTok"><svg class="ico"><use href="#i-tt"/></svg></a>
+        <a href="https://wa.me/256742173435" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ico"><use href="#i-wa"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#services">Services & Pricing</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get in touch</h4>
+      <ul>
+        <li><a href="https://wa.me/256742173435" target="_blank" rel="noopener">+256 742 173 435</a></li>
+        <li><a href="mailto:hello@victadesigns.com">hello@victadesigns.com</a></li>
+        <li>Kampala, Uganda</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Victa Designs. All rights reserved.</div>
+</footer>
+
+<a href="https://wa.me/256742173435" class="whatsapp-button" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp" aria-label="Chat with us on WhatsApp">
+  <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>
+</a>
+
+<script>
+  function syncMenu(open) {
+    const b = document.getElementById('menuBtn');
+    b.classList.toggle('open', open);
+    b.setAttribute('aria-expanded', open);
+    b.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  function toggleMenu() {
+    syncMenu(document.getElementById('navLinks').classList.toggle('active'));
+  }
+
+  function closeMenu() {
+    document.getElementById('navLinks').classList.remove('active');
+    syncMenu(false);
+  }
+
+  document.addEventListener('click', (e) => { if (!e.target.closest('nav')) closeMenu(); });
+  addEventListener('resize', () => { if (innerWidth > 768) closeMenu(); });
+
+  function toggleFaq(element) {
+    const item = element.parentElement;
+    item.classList.toggle('active');
+    const span = element.querySelector('span');
+    span.textContent = item.classList.contains('active') ? '−' : '+';
+    element.setAttribute('aria-expanded', item.classList.contains('active'));
+  }
+
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      const filter = btn.getAttribute('data-filter');
+
+      portfolioItems.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          item.classList.remove('hide');
+        } else {
+          item.classList.add('hide');
+        }
+      });
+    });
+  });
+
+  let lbItems = [], lbIndex = 0, lbLastFocus = null;
+
+  function openLightbox(el) {
+    lbItems = [...document.querySelectorAll('.portfolio-item:not(.hide)')];
+    lbIndex = Math.max(0, lbItems.indexOf(el));
+    lbLastFocus = document.activeElement;
+    showLightbox();
+    const lb = document.getElementById('lightbox');
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    lb.querySelector('.lightbox-close').focus();
+  }
+
+  function showLightbox() {
+    const el = lbItems[lbIndex];
+    const img = el.querySelector('img');
+    const big = document.getElementById('lightboxImg');
+    const small = img.currentSrc || img.src;
+    big.onerror = () => { big.onerror = null; big.src = small; };
+    big.src = small.replace('w=600&h=400', 'w=1400&h=933');
+    big.alt = img.alt;
+    document.getElementById('lightboxTitle').textContent = el.querySelector('h3').textContent;
+  }
+
+  function stepLightbox(dir) {
+    lbIndex = (lbIndex + dir + lbItems.length) % lbItems.length;
+    showLightbox();
+  }
+
+  function closeLightbox() {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('active')) return;
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+    if (lbLastFocus) lbLastFocus.focus();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeLightbox(); closeMenu(); }
+    if (document.getElementById('lightbox').classList.contains('active')) {
+      if (e.key === 'ArrowLeft') stepLightbox(-1);
+      if (e.key === 'ArrowRight') stepLightbox(1);
+    }
+  });
+
+  function imgFallback(img) {
+    if (img.dataset.fb) return;
+    img.dataset.fb = 1;
+    const svg = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#0A2620'/><stop offset='1' stop-color='#0B7A50'/></linearGradient></defs><rect width='600' height='400' fill='url(#g)'/><circle cx='470' cy='110' r='120' fill='#3DDC97' opacity='.25'/><circle cx='120' cy='330' r='80' fill='#FFC857' opacity='.18'/></svg>";
+    img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+  }
+  document.querySelectorAll('.portfolio-item img').forEach(img => {
+    img.addEventListener('error', () => imgFallback(img));
+    if (img.complete && img.naturalWidth === 0) imgFallback(img);
+  });
+
+  document.querySelectorAll('.portfolio-item').forEach(it => {
+    it.setAttribute('role', 'button');
+    it.setAttribute('aria-label', 'View ' + it.querySelector('h3').textContent);
+  });
+  document.querySelectorAll('.faq-question').forEach(q => q.setAttribute('aria-expanded', 'false'));
+  document.querySelectorAll('.filter-btn').forEach(b => b.setAttribute('aria-pressed', b.classList.contains('active')));
+
+  function sendForm(e) {
+    e.preventDefault();
+    const f = e.target, d = new FormData(f);
+    const text = 'Hi Victa, my name is ' + d.get('name') + '.\nService: ' + d.get('service') +
+      '\nEmail: ' + d.get('email') + (d.get('phone') ? '\nPhone: ' + d.get('phone') : '') + '\n\n' + d.get('message');
+    const url = 'https://wa.me/256742173435?text=' + encodeURIComponent(text);
+    const s = document.getElementById('formStatus');
+    const w = window.open(url, '_blank');
+    if (w) w.opener = null;
+    s.innerHTML = w ? 'Thanks! WhatsApp is opening with your message. Just press send.'
+                    : 'Almost done: <a href="' + url + '" target="_blank" rel="noopener">tap here to send your message on WhatsApp</a>.';
+    s.classList.add('show');
+    f.reset();
+    return false;
+  }
+
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const d = document.documentElement;
+    bar.style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + '%';
+  }, { passive: true });
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.faq-question, .portfolio-item')) {
+      e.preventDefault();
+      e.target.click();
+    }
+  });
+</script>
+
+</body>
+</html>
