@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Victa Designs | Graphic Design • Websites • Social Media</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: #f8f9fa;
+    }
+
+    /* ========== NAVIGATION ========== */
+    nav {
+      background: #111;
+      color: white;
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #25D366;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #25D366;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      background: linear-gradient(135deg, #0f0f0f, #1a1a2e);
+      color: white;
+      padding: 6rem 5%;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .btn:hover {
+      background: #1ebe57;
+      transform: translateY(-3px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #25D366;
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+      padding: 5rem 5%;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      color: #555;
+    }
+
+    /* ========== ABOUT ========== */
+    .about {
+      background: white;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+    }
+
+    /* ========== SERVICES ========== */
+    .services {
+      background: #f1f5f9;
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0 3rem;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .pricing-table th {
+      background: #111;
+      color: white;
+      padding: 1rem;
+      text-align: left;
+    }
+
+    .pricing-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .pricing-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pricing-table tr:hover {
+      background: #f8f9fa;
+    }
+
+    .price {
+      font-weight: 700;
+      color: #25D366;
+    }
+
+    /* ========== INTERACTIVE PORTFOLIO ========== */
+    .portfolio-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 2px solid #ddd;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #25D366;
+      color: white;
+      border-color: #25D366;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .portfolio-item {
+      position: relative;
+      height: 240px;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #ddd;
+      transition: transform 0.3s, opacity 0.4s;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.08);
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    .portfolio-overlay h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .portfolio-overlay span {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    .portfolio-item.hide {
+      display: none;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+      color: white;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 75vh;
+      border-radius: 10px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-content h3 {
+      margin-top: 1.2rem;
+      font-size: 1.5rem;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .lightbox-close:hover {
+      color: #25D366;
+    }
+
+    /* ========== FAQ ========== */
+    .faq-item {
+      background: white;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .faq-question {
+      padding: 1.2rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem 1.2rem;
+      color: #444;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonial {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    /* ========== CONTACT ========== */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      padding: 0.9rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      height: 140px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .contact-form button:hover {
+      background: #1ebe57;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 2.5rem 5%;
+    }
+
+    footer a {
+      color: #25D366;
+      text-decoration: none;
+    }
+
+    /* ========== WHATSAPP BUTTON ========== */
+    .whatsapp-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 60px;
+      height: 60px;
+      background-color: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      z-index: 9999;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+      text-decoration: none;
+    }
+
+    .whatsapp-button img {
+      width: 34px;
+      height: 34px;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #1ebe57;
+      transform: scale(1.15) rotate(8deg);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+      animation: none;
+    }
+
+    .whatsapp-button:hover img {
+      transform: scale(1.1);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #111;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0;
+        gap: 1.2rem;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-table {
+        font-size: 0.85rem;
+      }
+
+      .pricing-table th,
+      .pricing-table td {
+        padding: 0.7rem;
+      }
+
+      .whatsapp-button {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">Victa Designs</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" onclick="closeMenu()">Home</a></li>
+      <li><a href="#about" onclick="closeMenu()">About</a></li>
+      <li><a href="#services" onclick="closeMenu()">Services</a></li>
+      <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+      <li><a href="#training" onclick="closeMenu()">Training</a></li>
+      <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Design that builds brands.<br>Websites that work.<br>Social media that grows.</h1>
+      <p>I’m Victa — a graphic designer, website designer, and social media manager. I also teach others how to master these skills.</p>
+      <a href="#services" class="btn">View Packages</a>
+      <a href="#contact" class="btn btn-outline">Start a Project</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2>About Victa Designs</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>Victa Designs is a creative studio focused on helping businesses and individuals build strong visual identities and online presence.</p>
+          <p>I specialize in graphic design, website design, social media management, and practical training in these skills.</p>
+          <p>My approach is simple: understand your goals, create designs that communicate clearly, and deliver work that helps you grow.</p>
+        </div>
+        <div>
+          <p><strong>What I do:</strong></p>
+          <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+            <li>Logo & Brand Identity</li>
+            <li>Website Design</li>
+            <li>Social Media Management</li>
+            <li>Design Training & Mentorship</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES & PRICING -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2>Services & Pricing</h2>
+      <p class="section-subtitle">Choose a package that fits your needs. Custom packages are also available.</p>
+
+      <h3 style="margin: 2.5rem 0 1rem;">Graphic Design Packages</h3>
+      <table class="pricing-table">
+        <tr>
+          <th>Package</th>
+          <th>USD</th>
+          <th>UGX</th>
+          <th>What’s Included</th>
+        </tr>
+        <tr>
+          <td><strong>Starter</strong></td>
+          <td class="price">$50 – $80</td>
+          <td>192,500 – 308,000</td>
+          <td>Logo (2 concepts) + 2 revisions + files</td>
+        </tr>
+        <tr>
+          <td><strong>Brand Basic</strong></td>
+          <td class="price">$120 – $180</td>
+          <td>462,000 – 693,000</td>
+          <td>Logo + Business card + Social media profile kit</td>
+        </tr>
+        <tr>
+          <td><strong>Full Branding</strong></td>
+          <td class="price">$250 – $400</td>
+          <td>962,500 – 1,540,000</td>
+          <td>Logo + Full brand identity + Business card + Letterhead + Social templates</td>
+        </tr>
+      </table>
+
+      <h3 style="margin: 2.5rem 0 1rem;">Website Design Packages</h3>
+      <table class="pricing-table">
+        <tr>
+          <th>Package</th>
+          <th>USD</th>
+          <th>UGX</th>
+          <th>What’s Included</th>
+        </tr>
+        <tr>
+          <td><strong>Landing Page</strong></td>
+          <td class="price">$150 – $250</td>
+          <td>577,500 – 962,500</td>
+          <td>1-page website + Mobile friendly</td>
+        </tr>
+        <tr>
+          <td><strong>Business Website</strong></td>
+          <td class="price">$300 – $500</td>
+          <td>1,155,000 – 1,925,000</td>
+          <td>Up to 5 pages + Contact form</td>
+        </tr>
+        <tr>
+          <td><strong>Premium Website</strong></td>
+          <td class="price">$600 – $900</td>
+          <td>2,310,000 – 3,465,000</td>
+          <td>Up to 8 pages + Contact form + Basic SEO + How-to-update training</td>
+        </tr>
+      </table>
+
+      <h3 style="margin: 2.5rem 0 1rem;">Social Media Management (Monthly)</h3>
+      <table class="pricing-table">
+        <tr>
+          <th>Package</th>
+          <th>USD</th>
+          <th>UGX</th>
+          <th>What’s Included</th>
+        </tr>
+        <tr>
+          <td><strong>Basic</strong></td>
+          <td class="price">$80 – $120</td>
+          <td>308,000 – 462,000</td>
+          <td>8–12 posts + Captions + Hashtags + Scheduling</td>
+        </tr>
+        <tr>
+          <td><strong>Standard</strong></td>
+          <td class="price">$150 – $220</td>
+          <td>577,500 – 847,000</td>
+          <td>15–20 posts + Stories + Basic engagement + Monthly report</td>
+        </tr>
+        <tr>
+          <td><strong>Growth</strong></td>
+          <td class="price">$250 – $350</td>
+          <td>962,500 – 1,347,500</td>
+          <td>20–25 posts + Stories + Reels + Strategy + Growth support</td>
+        </tr>
+      </table>
+
+      <h3 style="margin: 2.5rem 0 1rem;">Training & Mentorship</h3>
+      <table class="pricing-table">
+        <tr>
+          <th>Package</th>
+          <th>USD</th>
+          <th>UGX</th>
+          <th>What’s Included</th>
+        </tr>
+        <tr>
+          <td><strong>One-on-One Session</strong></td>
+          <td class="price">$30 – $50</td>
+          <td>115,500 – 192,500</td>
+          <td>1-hour practical training</td>
+        </tr>
+        <tr>
+          <td><strong>Beginner Course</strong></td>
+          <td class="price">$120 – $180</td>
+          <td>462,000 – 693,000</td>
+          <td>4 sessions (choose one skill)</td>
+        </tr>
+        <tr>
+          <td><strong>Full Skills Package</strong></td>
+          <td class="price">$300 – $450</td>
+          <td>1,155,000 – 1,732,500</td>
+          <td>Complete training in all 3 skills + Support</td>
+        </tr>
+      </table>
+
+      <div style="background: white; padding: 2rem; border-radius: 12px; margin-top: 2rem;">
+        <h3>Payment Terms & Methods</h3>
+        <p><strong>Payment Structure:</strong></p>
+        <ul style="margin: 0.5rem 0 1rem 1.2rem;">
+          <li>50% deposit to start the project</li>
+          <li>50% balance on completion (before final files are released)</li>
+          <li>Monthly retainers: Full payment at the beginning of each month</li>
+        </ul>
+        <p><strong>Accepted Payment Methods:</strong></p>
+        <ul style="margin: 0.5rem 0 0 1.2rem;">
+          <li>MTN Mobile Money & Airtel Money</li>
+          <li>Bank Transfer</li>
+          <li>Cash (for local clients)</li>
+          <li>Other options can be discussed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PORTFOLIO -->
+  <section id="portfolio">
+    <div class="container">
+      <h2>Selected Projects</h2>
+      <p class="section-subtitle">Click any project to view it larger. Use the filters to browse by category.</p>
+
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="branding">Brand Identity</button>
+        <button class="filter-btn" data-filter="website">Websites</button>
+        <button class="filter-btn" data-filter="social">Social Media</button>
+        <button class="filter-btn" data-filter="other">Other</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+        <div class="portfolio-item" data-category="branding" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop" alt="Brand Identity">
+          <div class="portfolio-overlay">
+            <h3>Modern Logo Suite</h3>
+            <span>Brand Identity</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="website" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1467232004584-a241c7c6aa55?w=600&h=400&fit=crop" alt="Website Design">
+          <div class="portfolio-overlay">
+            <h3>Business Website</h3>
+            <span>Website Design</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="social" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1611162616475-46b635cb4953?w=600&h=400&fit=crop" alt="Social Media">
+          <div class="portfolio-overlay">
+            <h3>Social Media Kit</h3>
+            <span>Social Media</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="branding" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1626785774573-4b7993141ae5?w=600&h=400&fit=crop" alt="Brand Identity">
+          <div class="portfolio-overlay">
+            <h3>Complete Brand Package</h3>
+            <span>Brand Identity</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="website" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=400&fit=crop" alt="Website">
+          <div class="portfolio-overlay">
+            <h3>Portfolio Website</h3>
+            <span>Website Design</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="social" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop" alt="Social Media">
+          <div class="portfolio-overlay">
+            <h3>Instagram Campaign</h3>
+            <span>Social Media</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="other" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=400&fit=crop" alt="Flyer Design">
+          <div class="portfolio-overlay">
+            <h3>Event Flyer Design</h3>
+            <span>Other</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="branding" onclick="openLightbox(this)">
+          <img src="https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=600&h=400&fit=crop" alt="Logo Design">
+          <div class="portfolio-overlay">
+            <h3>Minimal Logo Design</h3>
+            <span>Brand Identity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <img id="lightboxImg" src="" alt="">
+      <h3 id="lightboxTitle"></h3>
+    </div>
+  </div>
+
+  <!-- TRAINING -->
+  <section id="training" style="background: #f1f5f9;">
+    <div class="container">
+      <h2>Learn Design Skills With Me</h2>
+      <p class="section-subtitle">I help beginners and intermediate learners master practical skills in graphic design, website design, and social media management.</p>
+      <div style="text-align: center;">
+        <p>✔ Hands-on learning<br>✔ Real project guidance<br>✔ Feedback & mentorship</p>
+        <br>
+        <a href="#contact" class="btn">Book a Training Session</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">1. How long does a typical project take? <span>+</span></div>
+        <div class="faq-answer">
+          Logo / Graphic Design: 3–7 days<br>
+          Website Design: 7–14 days<br>
+          Social Media Management: Ongoing (monthly)<br>
+          Training sessions: Flexible based on your schedule
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">2. Do you offer revisions? <span>+</span></div>
+        <div class="faq-answer">Yes. Every package includes a set number of revisions. Extra revisions can be requested at a small additional fee.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">3. What do I need to provide to get started? <span>+</span></div>
+        <div class="faq-answer">Your business name and details, any existing logo or brand materials, examples of styles you like, and a clear description of what you need.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">4. Do you work with clients outside Uganda? <span>+</span></div>
+        <div class="faq-answer">Yes. I work with both local and international clients. Communication is mainly through WhatsApp, email, or Zoom.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">5. How does payment work? <span>+</span></div>
+        <div class="faq-answer">50% deposit to start, 50% on completion. Monthly packages are paid at the beginning of each month.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">6. What payment methods do you accept? <span>+</span></div>
+        <div class="faq-answer">MTN Mobile Money, Airtel Money, Bank Transfer, Cash (local clients), and other methods by arrangement.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">7. Can I get a custom package? <span>+</span></div>
+        <div class="faq-answer">Yes. If the standard packages don’t fully match your needs, I can create a custom package for you.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">8. Do you provide the source files? <span>+</span></div>
+        <div class="faq-answer">Yes. After final payment, you will receive all necessary files (including editable source files where applicable).</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">9. Do you offer training online or in person? <span>+</span></div>
+        <div class="faq-answer">Both options are available. Online via Zoom/Google Meet. In-person training can be arranged for local clients.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">10. What happens after I make the deposit? <span>+</span></div>
+        <div class="faq-answer">I will confirm receipt of payment, discuss your requirements in detail, and begin working on your project according to the agreed timeline.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section style="background: #f1f5f9;">
+    <div class="container">
+      <h2>What Clients Say</h2>
+      <div class="testimonial">
+        <p>“Victa transformed our brand identity and social media presence. Professional, creative, and easy to work with.”</p>
+        <strong>— Client Name</strong>
+      </div>
+      <div class="testimonial">
+        <p>“The website she designed for my business looks modern and works perfectly on mobile. Highly recommended!”</p>
+        <strong>— Client Name</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2>Let’s Work Together</h2>
+      <p class="section-subtitle">Have a project in mind or want to learn design skills? I’d love to hear from you.</p>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Please contact me directly on WhatsApp for faster response.');">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="tel" placeholder="Phone (optional)">
+        <select required>
+          <option value="">Service interested in</option>
+          <option>Graphic Design</option>
+          <option>Website Design</option>
+          <option>Social Media Management</option>
+          <option>Training / Mentorship</option>
+          <option>Other</option>
+        </select>
+        <textarea placeholder="Tell me about your project..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+      <div style="text-align: center; margin-top: 2rem;">
+        <p><strong>Prefer WhatsApp?</strong></p>
+        <a href="https://wa.me/256742173435" class="btn" target="_blank">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Victa Designs</strong></p>
+    <p>Graphic Design • Website Design • Social Media • Training</p>
+    <p style="margin-top: 1rem;">
+      <a href="https://wa.me/256742173435" target="_blank">+256 742 173 435</a>
+    </p>
+    <p style="margin-top: 1rem; opacity: 0.7;">© 2026 Victa Designs. All rights reserved.</p>
+  </footer>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a href="https://wa.me/256742173435" class="whatsapp-button" target="_blank" rel="noopener noreferrer" title="Chat with us on WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+  <script>
+    // Mobile Menu
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+
+    function closeMenu() {
+      document.getElementById('navLinks').classList.remove('active');
+    }
+
+    // FAQ Toggle
+    function toggleFaq(element) {
+      const item = element.parentElement;
+      item.classList.toggle('active');
+      const span = element.querySelector('span');
+      span.textContent = item.classList.contains('active') ? '−' : '+';
+    }
+
+    // Portfolio Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        portfolioItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.classList.remove('hide');
+          } else {
+            item.classList.add('hide');
+          }
+        });
+      });
+    });
+
+    // Lightbox
+    function openLightbox(element) {
+      const imgSrc = element.querySelector('img').src;
+      const title = element.querySelector('h3').textContent;
+
+      document.getElementById('lightboxImg').src = imgSrc;
+      document.getElementById('lightboxTitle').textContent = title;
+      document.getElementById('lightbox').classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
